@@ -14,14 +14,14 @@ export const createProblem = async (req, res) => {
     examples,
     constraints,
     testcases,
-    codeSnippet,
-    referenceSolution,
+    codeSnippets,
+    referenceSolutions,
   } = req.body;
 
   // going to check the user role once again
 
   try {
-    for (const [language, solutionCode] of Object.entries(referenceSolution)) {
+    for (const [language, solutionCode] of Object.entries(referenceSolutions)) {
       const languageId = getJudge0LanguageId(language);
 
       if (!languageId) {
@@ -67,8 +67,8 @@ export const createProblem = async (req, res) => {
         examples,
         constraints,
         testcases,
-        codeSnippet,
-        referenceSolution,
+        codeSnippets,
+        referenceSolutions,
         userId: req.user.id,
       },
     });
